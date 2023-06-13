@@ -73,22 +73,7 @@ BigInt::BigInt(const std::string& numStr) {
     fixInvalid();
 }
 
-/// @brief Function to fix invalid numbers made by constructors
-void BigInt::fixInvalid() {
-    // fixing when -0, or when size of numbers is 0
-    // in both cases, set to 0 and positive
-    
-    // start with -0
-    if (numbers.size() == 1 && numbers[0] == 0 && isNegative) {
-        isNegative = false;
-    }
-
-    // now check if size is 0
-    if (numbers.size() == 0) {
-        numbers.push_back(0);
-        isNegative = false;
-    }
-}
+/// @note Operator overloads
 
 /// @brief Addition operator
 /// @param rhs The number to add to this number
@@ -198,6 +183,9 @@ BigInt BigInt::operator-(const BigInt& rhs) const {
     throw std::runtime_error("Subtraction operator reached end of function");
 }
 
+/// @brief Multiplication operator
+/// @param rhs The number to multiply this number by
+/// @return The product of this number and rhs
 BigInt BigInt::operator*(const BigInt& rhs) const {
     // case of multiplication by zero
     if (*this == BigInt(0) || rhs == BigInt(0)) {
@@ -229,13 +217,13 @@ BigInt BigInt::operator*(const BigInt& rhs) const {
     return result;
 }
 
-
+/// @brief negation operator
+/// @return The negation of this number
 BigInt BigInt::operator-() const {
     BigInt result = *this;
     result.isNegative = !result.isNegative;
     return result;
 }
-
 
 /// @brief Increment operator (prefix)
 /// @return The reference to incremented number
@@ -356,6 +344,8 @@ bool BigInt::operator>=(const BigInt& rhs) const {
     return !(*this < rhs);
 }
 
+
+/// @note Helper Functions
 std::ostream& operator<<(std::ostream& os, const BigInt& num) {
   // Print the sign if the number is negative
   if (num.getIsNegative()) {
@@ -426,4 +416,21 @@ int BigInt::numDigits() const {
   }
   
   return numDigits + lastNumberDigits;
+}
+
+/// @brief Function to fix invalid numbers made by constructors
+void BigInt::fixInvalid() {
+    // fixing when -0, or when size of numbers is 0
+    // in both cases, set to 0 and positive
+    
+    // start with -0
+    if (numbers.size() == 1 && numbers[0] == 0 && isNegative) {
+        isNegative = false;
+    }
+
+    // now check if size is 0
+    if (numbers.size() == 0) {
+        numbers.push_back(0);
+        isNegative = false;
+    }
 }
