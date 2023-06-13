@@ -26,7 +26,7 @@ class BigInt {
   // TODO: implement these operators
   BigInt operator+(const BigInt& rhs) const;  // addition
   BigInt operator-(const BigInt& rhs) const;  // subtraction
-  BigInt operator*(const BigInt& rhs) const;  // TODO multiplication
+  BigInt operator*(const BigInt& rhs) const;  // multiplication
   BigInt operator/(const BigInt& rhs) const;  // TODO division
   BigInt operator%(const BigInt& rhs) const;  // TODO modulus
   BigInt operator-() const;                   // unary negation
