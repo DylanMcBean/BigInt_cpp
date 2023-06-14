@@ -52,4 +52,4 @@ Enjoy using BigInt_cpp and happy coding!
 
 ## License
 
-BigInt_cpp is released under the [MIT License](LICENSE).
+BigInt_cpp is released under the [DWTFYW lisense](LICENSE).
